@@ -8,7 +8,3 @@ class UserLoginForm(FlaskForm):
     password = PasswordField('Password', validators = [DataRequired()])
     submit_button = SubmitField()
 
-
-
-class characterCreationForm(FlaskForm):
-    submit_button = SubmitField()
