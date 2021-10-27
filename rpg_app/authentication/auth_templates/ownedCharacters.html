@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<header class="hero-section">
 <br>
 <h3 style="text-align: center;">Your Playable Characters:</h3>
 <br>
@@ -8,7 +9,7 @@
 margin-right: auto;">
     <thead>
       <tr>
-        <th>ID</th>
+        
         <th>Name</th>
         <th>Race</th>
         <th>Class</th>
@@ -25,7 +26,7 @@ margin-right: auto;">
     <tbody>
       {% for character in characters %}
         <tr>
-          <td>{{ character.id }}</td>
+          
           <td>{{ character.name }}</td>
           <td>{{ character.race }}</td>
           <td>{{ character.class_type }}</td>
@@ -48,7 +49,7 @@ margin-right: auto;">
   width:250px;">
     <button class="ui blue button" type="submit">Create New Random Character</button>
   </form>
-
+</header>
 
 
   {% endblock content %}
