@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<header class="hero-section">
+    <h3 class="header-text">Welcome to RPG APP! {{ current_user.email }}</h3>
+    <br>
+    <div class="container"style="width:50%">
+        <h3>Here are your profile details:</h3>
+        <table id="data" class="table table-striped" style="background-color: bisque;">
+            <thead>
+                <tr>
+                    <th>
+                        Email Address
+                    </th>
+                    <th>
+                        Current Token
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        {{ current_user.email }}
+                    </td>
+                    <td>
+                        {{ current_user.token }}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</header>
+
+
+{% endblock content %}

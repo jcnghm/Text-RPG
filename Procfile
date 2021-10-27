@@ -1,0 +1,1 @@
+web: gunicorn rpg_app:app --preload --timeout 60

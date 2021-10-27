@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<br>
+<h3 style="text-align: center;">Your Playable Characters:</h3>
+<br>
+<table id="data" class="table table-striped" style="background-color: bisque; width:50%; margin-left: auto;
+margin-right: auto;">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Race</th>
+        <th>Class</th>
+        <th>Strength</th>
+        <th>Dexterity</th>
+        <th>Intelligence</th>
+        <th>Vitality</th>
+        <th>Primary Ability</th>
+        <th>Racial Ability</th>
+        <th>Racial Weapon</th>
+        <th>Owner</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for character in characters %}
+        <tr>
+          <td>{{ character.id }}</td>
+          <td>{{ character.name }}</td>
+          <td>{{ character.race }}</td>
+          <td>{{ character.class_type }}</td>
+          <td>{{ character.strength }}</td>
+          <td>{{ character.dexterity }}</td>
+          <td>{{ character.intelligence }}</td>
+          <td>{{ character.vitality }}</td>
+          <td>{{ character.primary_abilty }}</td>
+          <td>{{ character.racial_ability }}</td>
+          <td>{{ character.racial_weapon }}</td>
+          <td>{{ character.user_token }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <br>
+
+
+
+  {% endblock content %}
