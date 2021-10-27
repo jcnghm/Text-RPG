@@ -6,7 +6,6 @@ from rpg_app.models import db, User, Character, character_schema, characters_sch
 
 api = Blueprint('api', __name__, url_prefix = '/api')
 
-# Create Random Character Routes
 
 @api.route('/characters', methods = ['POST'])
 @token_required
@@ -29,7 +28,6 @@ def create_character(current_user_token):
     response = character_schema.dump(character)
     return jsonify(response)
 
-# Retrieve Characters for table
 
 @api.route('/characters', methods = ['GET'])
 @token_required
@@ -40,7 +38,7 @@ def get_characters(current_user_token):
     return jsonify(response)
 
 
-# Delete a Character
+
 
 @api.route('/characters/<id>', methods = ['DELETE'])
 @token_required

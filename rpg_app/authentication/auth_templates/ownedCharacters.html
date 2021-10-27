@@ -33,18 +33,20 @@ margin-right: auto;">
           <td>{{ character.dexterity }}</td>
           <td>{{ character.intelligence }}</td>
           <td>{{ character.vitality }}</td>
-          <td>{{ character.primary_abilty }}</td>
+          <td>{{ character.primary_ability }}</td>
           <td>{{ character.racial_ability }}</td>
           <td>{{ character.racial_weapon }}</td>
-          <td>{{ character.user_token }}</td>
+          <td>{{ current_user.email }}</td>
+          <td><a class="ui red button" href="/delete/{{ character.id }}">Delete</a></td>
         </tr>
+        
       {% endfor %}
     </tbody>
   </table>
   <br>
-
-  <form action="/add" method="post">
-    <button class="ui blue button" type="submit">Add</button>
+  <form action="/add" method="post" style="margin: 0 auto; 
+  width:250px;">
+    <button class="ui blue button" type="submit">Create New Random Character</button>
   </form>
 
 

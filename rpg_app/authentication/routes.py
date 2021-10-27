@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash
 from werkzeug.security import check_password_hash
 from rpg_app.forms import UserLoginForm
-from rpg_app.models import User,db, Character
+from rpg_app.models import User,db, Character, character_schema
 import random
 from rpg_app.class_race_data import RACES, CLASSES, NAMES, DWARF_ABILITIES, DWARF_WEAPONS, HUMAN_ABILITIES, HUMAN_WEAPONS, ELF_ABILITIES, ELF_WEAPONS, DRAGONBORN_ABILITIES, DRAGONBORN_WEAPONS, TAUREN_ABILITES, TAUREN_WEAPONS, ORC_ABILITIES, ORC_WEAPONS 
 from rpg_app.class_abilities import BARD_ABILITIES, DRUID_ABILITIES, PALADIN_ABILITIES, MAGUS_ABILITIES, RANGER_ABILITIES, WARRIOR_ABILITIES
@@ -71,6 +71,14 @@ def owned():
     characters = Character.query.filter_by(user_token = owner).all()
 
     return render_template('ownedCharacters.html', characters = characters, owner = owner)
+
+@auth.route("/delete/<id>", methods = ['GET', 'DELETE'])
+@login_required
+def delete(id):
+    character = Character.query.get(id)
+    db.session.delete(character)
+    db.session.commit()
+    return redirect(url_for("auth.owned"))
 
 
 @auth.route("/add", methods=["POST"])
@@ -379,6 +387,7 @@ def add():
     new_character = Character(name, race, class_type, strength, dexterity, intelligence, vitality, primary_ability, racial_ability, racial_weapon, owner)
     db.session.add(new_character)
     db.session.commit()
+    flash("New Character Created")
 
     return redirect(url_for('auth.owned'))
 
