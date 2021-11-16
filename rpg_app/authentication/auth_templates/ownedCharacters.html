@@ -21,6 +21,7 @@ margin-right: auto;">
         <th>Racial Ability</th>
         <th>Racial Weapon</th>
         <th>Owner</th>
+        <th>Date Created</th>
       </tr>
     </thead>
     <tbody>
@@ -38,7 +39,8 @@ margin-right: auto;">
           <td>{{ character.racial_ability }}</td>
           <td>{{ character.racial_weapon }}</td>
           <td>{{ current_user.email }}</td>
-          <td><a class="ui red button" href="/delete/{{ character.id }}">Delete</a></td>
+          <td>{{ character.date_created.strftime('%Y/%m/%d') }}</td>
+          <td><a class="btn btn-outline-danger" href="/delete/{{ character.id }}">Delete</a></td>
         </tr>
         
       {% endfor %}
@@ -47,7 +49,7 @@ margin-right: auto;">
   <br>
   <form action="/add" method="post" style="margin: 0 auto; 
   width:250px;">
-    <button class="ui blue button" type="submit">Create New Random Character</button>
+    <button class="btn btn-outline-success" type="submit">Create New Random Character</button>
   </form>
 </header>
 

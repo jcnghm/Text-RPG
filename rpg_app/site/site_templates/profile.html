@@ -16,6 +16,9 @@
                     <th>
                         Current Token
                     </th>
+                    <th>
+                        Account Created
+                    </th>
                 </tr>
             </thead>
             <tbody>
@@ -25,6 +28,9 @@
                     </td>
                     <td>
                         {{ current_user.token }}
+                    </td>
+                    <td>
+                        {{ current_user.date_created.strftime('%Y/%m/%d') }}
                     </td>
                 </tr>
             </tbody>
